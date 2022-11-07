@@ -20,6 +20,7 @@ int verifyEH(const char *hdr, const std::vector<unsigned char> &soln, const char
     crypto_generichash_blake2b_update(&state, (const unsigned char*)hdr, 140);
 
     bool isValid;
+    
     EhIsValidSolution(N, K, state, soln, isValid);
 
 	return isValid;
