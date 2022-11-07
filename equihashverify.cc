@@ -17,7 +17,7 @@ int verifyEH(const char *hdr, const std::vector<unsigned char> &soln, const char
     crypto_generichash_blake2b_state state;
     EhInitialiseState(N, K, state, personalizationString);
 
-    crypto_generichash_blake2b_update(&state, (const unsigned char*)hdr, 140);
+    crypto_generichash_blake2b_update(&state, (const unsigned char*)hdr, 204);
 
     bool isValid;
     
@@ -29,7 +29,7 @@ int verifyEH(const char *hdr, const std::vector<unsigned char> &soln, const char
 void Verify(const v8::FunctionCallbackInfo<Value>& args) {
     Isolate* isolate = Isolate::GetCurrent();
     HandleScope scope(isolate);
-
+    printf("lalalalal####################################");
     if (args.Length() < 4) {
         isolate->ThrowException(
             Exception::TypeError(String::NewFromUtf8(isolate, "Wrong number of arguments"))
@@ -66,7 +66,7 @@ void Verify(const v8::FunctionCallbackInfo<Value>& args) {
     }
 
     const char *hdr = node::Buffer::Data(header);
-    if(node::Buffer::Length(header) != 140) {
+    if(node::Buffer::Length(header) != 204) {
         //invalid hdr length
         args.GetReturnValue().Set(false);
         return;
