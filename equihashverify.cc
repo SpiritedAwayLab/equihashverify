@@ -19,7 +19,7 @@ int verifyEH(const char *hdr, const std::vector<unsigned char> &soln, const char
     crypto_generichash_blake2b_state state;
     EhInitialiseState(N, K, state, personalizationString);
 
-    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 204);
+    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 140);
 
     bool isValid;
 
@@ -70,7 +70,7 @@ void Verify(const v8::FunctionCallbackInfo<Value> &args)
     printf("lalalalal\n");
     const char *hdr = node::Buffer::Data(header);
     printf("lalalalal\n");
-    if (node::Buffer::Length(header) != 204)
+    if (node::Buffer::Length(header) != 140)
     {
         // invalid hdr length
         printf("222222222222222204");
