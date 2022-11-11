@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1668195791336,
@@ -20,6 +20,10 @@
                 {
                     "date": 1668197435080,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     // Hash state\r\n     crypto_generichash_blake2b_state state;\r\n     EhInitialiseState(N, K, state, personalizationString);\r\n \r\n-    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 140);\r\n+    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 204);\r\n \r\n     bool isValid;\r\n \r\n     EhIsValidSolution(N, K, state, soln, isValid);\r\n@@ -69,9 +69,9 @@\n     }\r\n     printf(\"lalalalal\\n\");\r\n     const char *hdr = node::Buffer::Data(header);\r\n     printf(\"lalalalal\\n\");\r\n-    if (node::Buffer::Length(header) != 140)\r\n+    if (node::Buffer::Length(header) != 204)\r\n     {\r\n         // invalid hdr length\r\n         printf(\"222222222222222204\");\r\n         args.GetReturnValue()\r\n"
+                },
+                {
+                    "date": 1668207011480,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,25 +31,25 @@\n void Verify(const v8::FunctionCallbackInfo<Value> &args)\r\n {\r\n     Isolate *isolate = Isolate::GetCurrent();\r\n     HandleScope scope(isolate);\r\n-    printf(\"lalalalal####################################\\n\");\r\n+\r\n     if (args.Length() < 4)\r\n     {\r\n         isolate->ThrowException(\r\n             Exception::TypeError(String::NewFromUtf8(isolate, \"Wrong number of arguments\")));\r\n \r\n         return;\r\n     }\r\n-    printf(\"lalalalal####################################1\\n\");\r\n+\r\n     if (!args[3]->IsInt32() || !args[4]->IsInt32())\r\n     {\r\n         isolate->ThrowException(\r\n             Exception::TypeError(String::NewFromUtf8(isolate, \"Fourth and fifth parameters should be equihash parameters (n, k)\")));\r\n \r\n         return;\r\n     }\r\n-    printf(\"lalalalal####################################2\\n\");\r\n+\r\n     Local<Object> header = args[0]->ToObject();\r\n     Local<Object> solution = args[1]->ToObject();\r\n \r\n     if (!node::Buffer::HasInstance(header) || !node::Buffer::HasInstance(solution))\r\n@@ -58,23 +58,23 @@\n             Exception::TypeError(String::NewFromUtf8(isolate, \"First two arguments should be buffer objects.\")));\r\n \r\n         return;\r\n     }\r\n-    printf(\"lalalalal\\n\");\r\n+\r\n     if (!args[2]->IsString())\r\n     {\r\n         isolate->ThrowException(\r\n             Exception::TypeError(String::NewFromUtf8(isolate, \"Third argument should be the personalization string.\")));\r\n \r\n         return;\r\n     }\r\n-    printf(\"lalalalal\\n\");\r\n+\r\n     const char *hdr = node::Buffer::Data(header);\r\n-    printf(\"lalalalal\\n\");\r\n+\r\n     if (node::Buffer::Length(header) != 204)\r\n     {\r\n         // invalid hdr length\r\n-        printf(\"222222222222222204\");\r\n+\r\n         args.GetReturnValue()\r\n             .Set(false);\r\n         return;\r\n     }\r\n"
                 }
             ],
             "date": 1668195791336,

@@ -32,7 +32,7 @@ void Verify(const v8::FunctionCallbackInfo<Value> &args)
 {
     Isolate *isolate = Isolate::GetCurrent();
     HandleScope scope(isolate);
-    printf("lalalalal####################################\n");
+
     if (args.Length() < 4)
     {
         isolate->ThrowException(
@@ -40,7 +40,7 @@ void Verify(const v8::FunctionCallbackInfo<Value> &args)
 
         return;
     }
-    printf("lalalalal####################################1\n");
+
     if (!args[3]->IsInt32() || !args[4]->IsInt32())
     {
         isolate->ThrowException(
@@ -48,7 +48,7 @@ void Verify(const v8::FunctionCallbackInfo<Value> &args)
 
         return;
     }
-    printf("lalalalal####################################2\n");
+
     Local<Object> header = args[0]->ToObject();
     Local<Object> solution = args[1]->ToObject();
 
@@ -59,7 +59,7 @@ void Verify(const v8::FunctionCallbackInfo<Value> &args)
 
         return;
     }
-    printf("lalalalal\n");
+
     if (!args[2]->IsString())
     {
         isolate->ThrowException(
@@ -67,13 +67,13 @@ void Verify(const v8::FunctionCallbackInfo<Value> &args)
 
         return;
     }
-    printf("lalalalal\n");
+
     const char *hdr = node::Buffer::Data(header);
-    printf("lalalalal\n");
+
     if (node::Buffer::Length(header) != 204)
     {
         // invalid hdr length
-        printf("222222222222222204");
+
         args.GetReturnValue()
             .Set(false);
         return;
