@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1668195791336,
@@ -16,6 +16,10 @@
                 {
                     "date": 1668196036060,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     // Hash state\r\n     crypto_generichash_blake2b_state state;\r\n     EhInitialiseState(N, K, state, personalizationString);\r\n \r\n-    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 204);\r\n+    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 140);\r\n \r\n     bool isValid;\r\n \r\n     EhIsValidSolution(N, K, state, soln, isValid);\r\n@@ -69,9 +69,9 @@\n     }\r\n     printf(\"lalalalal\\n\");\r\n     const char *hdr = node::Buffer::Data(header);\r\n     printf(\"lalalalal\\n\");\r\n-    if (node::Buffer::Length(header) != 204)\r\n+    if (node::Buffer::Length(header) != 140)\r\n     {\r\n         // invalid hdr length\r\n         printf(\"222222222222222204\");\r\n         args.GetReturnValue()\r\n"
+                },
+                {
+                    "date": 1668197435080,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     // Hash state\r\n     crypto_generichash_blake2b_state state;\r\n     EhInitialiseState(N, K, state, personalizationString);\r\n \r\n-    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 140);\r\n+    crypto_generichash_blake2b_update(&state, (const unsigned char *)hdr, 204);\r\n \r\n     bool isValid;\r\n \r\n     EhIsValidSolution(N, K, state, soln, isValid);\r\n@@ -69,9 +69,9 @@\n     }\r\n     printf(\"lalalalal\\n\");\r\n     const char *hdr = node::Buffer::Data(header);\r\n     printf(\"lalalalal\\n\");\r\n-    if (node::Buffer::Length(header) != 140)\r\n+    if (node::Buffer::Length(header) != 204)\r\n     {\r\n         // invalid hdr length\r\n         printf(\"222222222222222204\");\r\n         args.GetReturnValue()\r\n"
                 }
             ],
             "date": 1668195791336,
